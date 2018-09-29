@@ -1,0 +1,11 @@
+<header>
+    <h1>Warsztat App</h1>
+    <table border="1">
+        <tr>
+            <td><a href="/">Homepage</a></td>
+            <td><a href="/customer/list">Customers</a></td>
+            <td><a href="/employee/list">Employees</a></td>
+        </tr>
+    </table>
+    <hr>
+</header>

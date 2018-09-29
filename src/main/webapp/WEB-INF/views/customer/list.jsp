@@ -3,7 +3,7 @@
   Created by IntelliJ IDEA.
   User: benek
   Date: 29.09.18
-  Time: 09:01
+  Time: 10:42
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,21 +13,20 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/jspf/header.jspf"%>
-Aktualnie prowadzone naprawy:
+<h2>List of customers</h2>
 <table border="1">
     <tr>
-        <td>ID</td>
-        <td>Vehicle ID</td>
-        <td>Employee ID</td>
-        <td>Status</td>
+        <td>id</td>
+        <td>First name</td>
+        <td>Last name</td>
     </tr>
-    <c:forEach var="order" items="${orders}">
+    <c:forEach items="${customers}" var="customer">
         <tr>
-            <td>${order.id}</td>
-            <td>${order.vehicle.brand} ${order.vehicle.model}</td>
-            <td>${order.employee.firstName} ${order.employee.lastName}</td>
-            <td>${order.status.description}</td>
+            <td>${customer.id}</td>
+            <td>${customer.firstName}</td>
+            <td>${customer.lastName}</td>
         </tr>
+
     </c:forEach>
 </table>
 <%@ include file="/WEB-INF/views/jspf/footer.jspf"%>
