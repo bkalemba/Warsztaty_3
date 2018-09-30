@@ -107,7 +107,7 @@ public class EmployeeDao {
         }
     }
 
-    private static void delete(Employee employee) {
+    public static void delete(Employee employee) {
         final String sql = "DELETE FROM employee " +
                 "WHERE id = ?;";
         try (Connection connection = DbUtil.getConn();

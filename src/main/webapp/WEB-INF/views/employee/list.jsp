@@ -14,17 +14,45 @@
 <body>
 <%@ include file="/WEB-INF/views/jspf/header.jspf"%>
 <h2>List of employees</h2>
+<a href="/employee/add">Add new Employee</a>
 <table border="1">
     <tr>
-        <td>id</td>
-        <td>First name</td>
-        <td>Last name</td>
+        <th>id</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Note</th>
+        <th>Hour cost</th>
+        <th colspan="3">Actions</th>
     </tr>
     <c:forEach items="${employees}" var="employee">
         <tr>
             <td>${employee.id}</td>
             <td>${employee.firstName}</td>
             <td>${employee.lastName}</td>
+            <td>${employee.address}</td>
+            <td>${employee.phone}</td>
+            <td>${employee.note}</td>
+            <td>${employee.hourCost}</td>
+            <td>
+                <form action="/employee/orders" method="post">
+                    <input type="hidden" name="employeeId" value="${employee.id}">
+                    <input type="submit" value="View Orders">
+                </form>
+            </td>
+            <td>
+                <form action="/employee/edit" method="post">
+                    <input type="hidden" name="employeeId" value="${employee.id}">
+                    <input type="submit" value="Edit">
+                </form>
+            </td>
+            <td>
+                <form action="/employee/delete" method="post">
+                    <input type="hidden" name="employeeId" value="${employee.id}">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
         </tr>
 
     </c:forEach>

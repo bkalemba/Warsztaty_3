@@ -51,7 +51,7 @@ CREATE TABLE orders(
   final_cost DOUBLE(9,2),
   parts_cost DOUBLE(9,2),
   work_hours DOUBLE(9,2),
-  FOREIGN KEY(vehicle_id) REFERENCES vehicle(id),
-  FOREIGN KEY(employee_id) REFERENCES employee(id),
-  FOREIGN KEY(status_id) REFERENCES status(id)
+  FOREIGN KEY(vehicle_id) REFERENCES vehicle(id) ON DELETE CASCADE,
+  FOREIGN KEY(employee_id) REFERENCES employee(id) ON DELETE CASCADE,
+  FOREIGN KEY(status_id) REFERENCES status(id) ON DELETE CASCADE
 );
