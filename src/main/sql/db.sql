@@ -8,7 +8,8 @@ USE warsztat3;
 CREATE TABLE customer(
   id INT AUTO_INCREMENT PRIMARY KEY,
   first_name VARCHAR(255),
-  last_name VARCHAR(255)
+  last_name VARCHAR(255),
+  birth_date DATE
 );
 
 CREATE TABLE employee(

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "EmployeDeleteServlet", urlPatterns = "/employee/delete")
-public class EmployeDeleteServlet extends HttpServlet {
+@WebServlet(name = "EmployeeDeleteServlet", urlPatterns = "/employee/delete")
+public class EmployeeDeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String confirm = request.getParameter("confirm");
         String employeeId = request.getParameter("employeeId");

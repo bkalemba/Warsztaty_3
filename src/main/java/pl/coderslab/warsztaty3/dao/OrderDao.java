@@ -107,4 +107,34 @@ public class OrderDao {
         return result;
     }
 
+    public static List<Order> loadByVehicle(Vehicle vehicle) {
+        List<Order> result = new ArrayList<>();
+        final String sql = "SELECT id, vehicle_id, employee_id, status_id, created, expected_start, actual_start, customer_description, employee_description, final_cost, parts_cost, work_hours FROM orders " +
+                "WHERE vehicle_id=?;";
+        try (Connection connection = DbUtil.getConn();
+             PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, vehicle.getId());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Employee employee = EmployeeDao.loadById(rs.getInt(3));
+                Status status = StatusDao.loadById(rs.getInt(4));
+                result.add(new Order(rs.getInt(1), vehicle, employee, status, rs.getString(5), rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9),rs.getDouble(10),rs.getDouble(11),rs.getDouble(12)));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static List<Order> loadByCustomer(Customer customer){
+        List<Order> result = new ArrayList<>();
+        List<Vehicle> vehicles = VehicleDao.loadByCustomer(customer);
+        for (Vehicle vehicle : vehicles) {
+            List<Order> orders = loadByVehicle(vehicle);
+            result.addAll(orders);
+        }
+        return result;
+    }
+
 }
